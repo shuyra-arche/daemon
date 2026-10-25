@@ -1,9 +1,6 @@
-//! Daemon UnitFile and its own exit reason.
+//! Daemon UnitFile.
 
-use crate::unit::{Died, Ending, UnitFile};
-
-/// The daemon could not open its scoped faces or lost that scope.
-pub const E_DAEMON: Died = 13;
+use crate::unit::{Ending, UnitFile};
 
 pub static PROGRAM: UnitFile = UnitFile {
     name: "daemon",
