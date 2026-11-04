@@ -1,22 +1,35 @@
-//! Daemon UnitFile.
+#![no_std]
 
-use crate::unit::{Ending, UnitFile};
+//! Daemon UnitFile and image build declaration.
 
-pub static PROGRAM: UnitFile = UnitFile {
+use unit::{Ending, ImageBuild, UnitFile};
+
+pub static UNIT: UnitFile = UnitFile {
     name: "daemon",
-    loader: crate::unit::LoaderConfig::user("daemon"),
-    operator: crate::unit::OperatorConfig::DEFAULT,
-    identity: crate::unit::Identity::DEFAULT,
-    control: crate::unit::ControlConfig {
+    loader: unit::LoaderConfig::user("daemon"),
+    operator: unit::OperatorConfig::DEFAULT,
+    identity: unit::Identity::DEFAULT,
+    control: unit::ControlConfig {
         supervision: Some("supervised"),
         after: Some(&[
-            crate::unit::Dependency::Bootstrap(crate::unit::Bootstrap::Operator),
-            crate::unit::Dependency::Target("supervised"),
+            unit::Dependency::Bootstrap(unit::Bootstrap::Operator),
+            unit::Dependency::Target("supervised"),
         ]),
         ending: Some(Ending::Resident),
-        ready: crate::unit::Ready::Signal(crate::unit::READY_MARK),
+        ready: unit::Ready::Signal(unit::READY_MARK),
         construction: &[],
         retirement: &[],
     },
-    supply: crate::unit::SupplyConfig::DEFAULT,
+    supply: unit::SupplyConfig::DEFAULT,
+};
+
+pub const BUILD: ImageBuild = ImageBuild {
+    image: "daemon",
+    manifest: "server/Cargo.toml",
+    package: "daemon-server",
+    bin: "daemon",
+    target: "riscv64gc-unknown-none-elf",
+    profile: "release",
+    features: &[],
+    default_features: true,
 };

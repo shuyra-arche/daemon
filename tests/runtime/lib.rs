@@ -2,9 +2,9 @@
 #![allow(dead_code)]
 extern crate alloc;
 
-#[path = "../../src/service/daemon/core/decision.rs"]
+#[path = "../../server/src/core/decision.rs"]
 mod decision;
-#[path = "../../src/service/daemon/core/startup.rs"]
+#[path = "../../server/src/core/startup.rs"]
 mod startup;
 
 mod cases;

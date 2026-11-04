@@ -6,8 +6,8 @@ use super::backoff::Backoff;
 use super::intake;
 use super::observe::observe;
 use super::recover::recover;
-use crate::service::daemon::core::{Decision, Startup, decide};
-use crate::unit::READY_MARK;
+use crate::core::{Decision, Startup, decide};
+use unit::READY_MARK;
 
 const STARTUP_MS: usize = 5000;
 const IDLE_MS: usize = 100;

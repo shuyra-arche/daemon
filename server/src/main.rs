@@ -1,11 +1,10 @@
 #![no_std]
 #![no_main]
-extern crate programs;
 
-#[programs::entry]
+#[mold::entry]
 fn main() -> Result<(), env::Reason> {
-    programs::service::daemon::run().map_err(|why| {
-        programs::debug::put(why);
-        programs::service::daemon::E_DAEMON
+    daemon_server::run().map_err(|why| {
+        system_support::debug::put(why);
+        daemon_server::E_DAEMON
     })
 }

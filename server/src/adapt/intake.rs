@@ -5,7 +5,7 @@ use system_client::control::{Face, Observe};
 use system_client::operator;
 
 use super::faces::Faces;
-use crate::support::timing::BOOT_MS;
+use system_support::support::timing::BOOT_MS;
 
 /// Open only the public supervision and recover faces below the service namespace.
 pub fn open() -> Result<Faces, &'static str> {

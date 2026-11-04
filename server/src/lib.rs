@@ -1,5 +1,9 @@
 //! One resident user-mode observer for the declared supervision group.
 
+#![no_std]
+
+extern crate alloc;
+
 mod adapt;
 mod core;
 
