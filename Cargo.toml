@@ -1,0 +1,14 @@
+[workspace]
+resolver = "3"
+members = ["declaration", "server"]
+exclude = ["tests/runtime"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
