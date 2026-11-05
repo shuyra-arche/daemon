@@ -1,6 +1,7 @@
 #![no_std]
 
-//! Daemon UnitFile and image build declaration.
+//! Legacy Daemon UnitFile and image build compatibility declaration.
+//! Current runtime policy is owned by the repository's `unit.toml`.
 
 use unit::{Ending, ImageBuild, UnitFile};
 
